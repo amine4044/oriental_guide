@@ -1,12 +1,110 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hotel{% endblock %}
+{% block title %}Hotel Details{% endblock %}
 
 {% block body %}
-    <h1>Hotel</h1>
+    <style>
+        body {
+            background: #f2f6fc;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+        }
 
-    <table class="table">
-        <tbody>
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-delete button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-delete button:hover {
+            background-color: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .btn, .btn-delete button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <h1>Hotel Details</h1>
+
+    <div class="card">
+        <table>
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ hotel.id }}</td>
@@ -31,12 +129,15 @@
                 <th>Image</th>
                 <td>{{ hotel.image }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_hotel_index') }}">back to list</a>
-
-    <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}">edit</a>
-
-    {{ include('hotel/_delete_form.html.twig') }}
+        <div class="btn-group">
+            <a href="{{ path('app_hotel_index') }}" class="btn btn-back">Back to list</a>
+            <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}" class="btn btn-edit">Edit</a>
+            <div class="btn-delete">
+                {{ include('hotel/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

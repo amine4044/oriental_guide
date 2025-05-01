@@ -1,4 +1,50 @@
 {{ form_start(form) }}
+<div class="form-container">
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-submit">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_end(form) }}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-submit {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>

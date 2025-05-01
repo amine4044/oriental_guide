@@ -1,13 +1,122 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Car</title>
+    <style>
+        /* Style général de la page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
 
-{% block title %}Edit Car{% endblock %}
+        /* Titre */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
 
-{% block body %}
-    <h1>Edit Car</h1>
+        /* Formulaire */
+        form {
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
-    {{ include('car/_form.html.twig', {'button_label': 'Update'}) }}
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
 
-    <a href="{{ path('app_car_index') }}">back to list</a>
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
 
+        form button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Lien "back to list" */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: #17a2b8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #117a8b;
+        }
+
+        /* Formulaire de suppression */
+        .delete-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .delete-form button {
+            background-color: #dc3545;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .delete-form button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Edit Car</h1>
+
+{{ include('car/_form.html.twig', {'button_label': 'Update'}) }}
+
+<a href="{{ path('app_car_index') }}" class="back-link">Back to list</a>
+
+<div class="delete-form">
     {{ include('car/_delete_form.html.twig') }}
-{% endblock %}
+</div>
+
+</body>
+</html>

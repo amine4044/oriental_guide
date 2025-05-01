@@ -3,17 +3,83 @@
 {% block title %}Booking index{% endblock %}
 
 {% block body %}
+    <style>
+        body {
+            background-color: #f7f9fc;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table td {
+            background-color: #f9f9f9;
+        }
+
+        .table a {
+            color: #17a2b8;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .table a:hover {
+            text-decoration: underline;
+        }
+
+        .create-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .create-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-records {
+            text-align: center;
+            color: #999;
+        }
+    </style>
+
     <h1>Booking index</h1>
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Price</th>
-                <th>DateFrom</th>
-                <th>DateTo</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Price</th>
+            <th>DateFrom</th>
+            <th>DateTo</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for booking in bookings %}
@@ -29,11 +95,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5" class="no-records">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_booking_new') }}">Create new</a>
+    <a href="{{ path('app_booking_new') }}" class="create-link">Create new</a>
 {% endblock %}
