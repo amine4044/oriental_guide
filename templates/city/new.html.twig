@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New City{% endblock %}
-
 {% block body %}
-    <h1>Create new City</h1>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Ville</h6>
+                <h1>Créer une nouvelle ville</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
 
-    {{ include('city/_form.html.twig') }}
+                        {{ include('city/_form.html.twig') }}
 
-    <a href="{{ path('app_city_index') }}">back to list</a>
+                        <a href="{{ path('app_city_index') }}">Retour à la liste</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

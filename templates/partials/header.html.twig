@@ -1,0 +1,83 @@
+<div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <p><i class="fa fa-envelope mr-2"></i>contact@oriental_guide.com</p>
+                    <p class="text-body px-3">|</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>06 66 66 66 66</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+            <a href="/" class="navbar-brand">
+                <h1 class="m-0 text-primary"><span class="text-dark">ORIENTAL </span>GUIDE</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                <div class="navbar-nav ml-auto py-0">
+                    {# Home #}
+                    <a href="{{ path('app_home') }}"
+                       class="nav-item nav-link {{ app.request.pathinfo == '/' ? 'active' : '' }}">
+                        Accueil
+                    </a>
+
+                    {# Cities #}
+                    <a href="{{ path('app_city_index') }}"
+                       class="nav-item nav-link {{ '/city' in app.request.pathinfo ? 'active' : '' }}">
+                        Villes
+                    </a>
+
+                    {# Réservations Dropdown: Hotels, Restaurants, Cars #}
+                    {% set isReservationActive = '/hotel' in app.request.pathinfo
+                        or '/restaurant' in app.request.pathinfo
+                        or '/car' in app.request.pathinfo %}
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle {{ isReservationActive ? 'active' : '' }}" data-toggle="dropdown">Réservations</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="{{ path('app_hotel_index') }}"
+                               class="dropdown-item {{ '/hotel' in app.request.pathinfo ? 'active' : '' }}">
+                                Hôtels
+                            </a>
+                            <a href="{{ path('app_restaurant_index') }}"
+                               class="dropdown-item {{ '/restaurant' in app.request.pathinfo ? 'active' : '' }}">
+                                Restaurants
+                            </a>
+                            <a href="{{ path('app_car_index') }}"
+                               class="dropdown-item {{ '/car' in app.request.pathinfo ? 'active' : '' }}">
+                                Voitures
+                            </a>
+                        </div>
+                    </div>
+
+                    {# Contact #}
+                    <a href="{{ path('app_contact') }}"
+                       class="nav-item nav-link {{ '/contact' in app.request.pathinfo ? 'active' : '' }}">
+                        Contact
+                    </a>
+
+                    {# Auth Links #}
+                    {% if app.user %}
+                        <a href="{{ path('app_logout') }}" class="nav-item nav-link">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}"
+                           class="nav-item nav-link {{ '/login' in app.request.pathinfo ? 'active' : '' }}">
+                            Connexion
+                        </a>
+                        <a href="{{ path('app_register') }}"
+                           class="nav-item nav-link {{ '/register' in app.request.pathinfo ? 'active' : '' }}">
+                            Inscription
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

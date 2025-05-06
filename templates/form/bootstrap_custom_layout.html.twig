@@ -1,0 +1,28 @@
+{% use 'form_div_layout.html.twig' %}
+
+{# Text, Email, etc. #}
+{% block form_row %}
+    <div class="control-group mb-3">
+        {{ form_widget(form, {'attr': {'class': 'form-control p-4'}}) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{% block choice_widget_collapsed %}
+    <div class="control-group mb-3">
+        {{ parent() }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{# Label - optional if you use placeholders #}
+{% block form_label %}
+    {# You can keep it empty or style it differently here if needed #}
+{% endblock %}
+
+{# Errors #}
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <p class="help-block text-danger">{{ errors|first.message }}</p>
+    {% endif %}
+{% endblock %}
