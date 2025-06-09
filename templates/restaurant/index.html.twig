@@ -27,9 +27,11 @@
                 {% endfor %}
 
             </div>
-            <div class="text-center mt-4">
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="text-center mt-4">
                 <a href="{{ path('app_restaurant_new') }}" class="btn btn-primary">Créer un nouveau restaurant</a>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

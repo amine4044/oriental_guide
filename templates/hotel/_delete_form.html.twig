@@ -2,7 +2,10 @@
       onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet hôtel ?');"
       class="d-inline">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ hotel.id) }}">
+    {% if is_granted("ROLE_ADMIN") %}
     <button class="btn btn-danger">
         <i class="bi bi-trash"></i> Supprimer
     </button>
+    {% endif %}
+
 </form>
