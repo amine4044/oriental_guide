@@ -1,41 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Car index{% endblock %}
+{% block title %}Villes{% endblock %}
 
 {% block body %}
-    <h1>Car index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for car in cars %}
-            <tr>
-                <td>{{ car.id }}</td>
-                <td>{{ car.name }}</td>
-                <td>{{ car.address }}</td>
-                <td>{{ car.image }}</td>
-                <td>{{ car.price }}</td>
-                <td>
-                    <a href="{{ path('app_car_show', {'id': car.id}) }}">show</a>
-                    <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_car_new') }}">Create new</a>
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Voitures</h6>
+                <h1>Explorez les meilleures voiture</h1>
+            </div>
+            <div class="row">
+                {% for car in cars %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid w-100 fixed-destination-img" src="{{ asset(car.image) }}" alt="{{ car.name }}">
+                            <a class="destination-overlay text-white text-decoration-none"
+                               href="{{ path('app_car_show', {'id': car.id}) }}">
+                                <h5 class="text-white">{{ car.name }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">Aucune voiture trouvée.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ path('app_car_new') }}" class="btn btn-primary">Créer une nouvelle marque de voiture</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

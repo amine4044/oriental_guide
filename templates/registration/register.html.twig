@@ -1,19 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <style>
+        body {
+            background-image: url('{{ asset('/upload/morocco.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+    </style>
 
-    {{ form_errors(registrationForm) }}
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow-lg p-5" style="width: 100%; max-width: 700px; border-radius: 16px; background-color: rgba(255, 255, 255, 0.95);">
+            <h2 class="text-center mb-5" style="font-weight: bold; font-size: 2rem;">Créer un compte</h2>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_start(registrationForm) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="mb-4">
+                <label class="form-label fs-5" for="{{ registrationForm.email.vars.id }}">Adresse email</label>
+                {{ form_widget(registrationForm.email, {
+                    'attr': {
+                        'class': 'form-control form-control-lg border-success-subtle',
+                        'placeholder': 'ex: nom@exemple.com',
+                        'autocomplete': 'email',
+                        'id': registrationForm.email.vars.id
+                    }
+                }) }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fs-5" for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
+                {{ form_widget(registrationForm.plainPassword, {
+                    'attr': {
+                        'class': 'form-control form-control-lg border-success-subtle',
+                        'autocomplete': 'new-password',
+                        'id': registrationForm.plainPassword.vars.id
+                    }
+                }) }}
+            </div>
+
+            <div class="form-check mb-4">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input', 'id': registrationForm.agreeTerms.vars.id}}) }}
+                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label', 'for': registrationForm.agreeTerms.vars.id}}) }}
+            </div>
+
+            <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-lg btn-success py-3 fs-5">S'inscrire</button>
+            </div>
+
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 {% endblock %}

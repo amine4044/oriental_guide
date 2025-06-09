@@ -1,38 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Restaurant{% endblock %}
+{% block title %}Détails du Restaurant{% endblock %}
 
 {% block body %}
-    <h1>Restaurant</h1>
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0"><i class="fas fa-utensils me-2"></i>Détails du Restaurant</h2>
+                <a href="{{ path('app_restaurant_index') }}" class="btn btn-light btn-sm">
+                    <i class="fas fa-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ restaurant.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ restaurant.name }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ restaurant.type }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ restaurant.image }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ restaurant.address }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row"><i class="fas fa-hashtag me-1"></i>ID</th>
+                        <td>{{ restaurant.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><i class="fas fa-signature me-1"></i>Nom</th>
+                        <td>{{ restaurant.name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><i class="fas fa-list me-1"></i>Type</th>
+                        <td>{{ restaurant.type }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><i class="fas fa-map-marker-alt me-1"></i>Adresse</th>
+                        <td>{{ restaurant.address }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <a href="{{ path('app_restaurant_index') }}">back to list</a>
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Modifier
+                </a>
 
-    <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}">edit</a>
-
-    {{ include('restaurant/_delete_form.html.twig') }}
+                {{ include('restaurant/_delete_form.html.twig', {'attr': {'class': 'd-inline'}}) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

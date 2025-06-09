@@ -26,9 +26,11 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="text-center mt-4">
-                <a href="{{ path('app_city_new') }}" class="btn btn-primary">Créer une nouvelle ville</a>
-            </div>
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="text-center mt-4">
+                    <a href="{{ path('app_city_new') }}" class="btn btn-primary">Créer une nouvelle ville</a>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,41 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Restaurant index{% endblock %}
+{% block title %}Villes{% endblock %}
 
 {% block body %}
-    <h1>Restaurant index</h1>
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Restaurants</h6>
+                <h1>Explorez les meilleures Restaurants</h1>
+            </div>
+            <div class="row">
+                {% for restaurant in restaurants %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid w-100 fixed-destination-img" src="{{ asset(restaurant.image) }}" alt="{{ restaurant.name }}">
+                            <a class="destination-overlay text-white text-decoration-none"
+                               href="{{ path('app_restaurant_show', {'id': restaurant.id}) }}">
+                                <h5 class="text-white">{{ restaurant.name }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">Aucune restaurant trouvée.</p>
+                    </div>
+                {% endfor %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Image</th>
-                <th>Address</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for restaurant in restaurants %}
-            <tr>
-                <td>{{ restaurant.id }}</td>
-                <td>{{ restaurant.name }}</td>
-                <td>{{ restaurant.type }}</td>
-                <td>{{ restaurant.image }}</td>
-                <td>{{ restaurant.address }}</td>
-                <td>
-                    <a href="{{ path('app_restaurant_show', {'id': restaurant.id}) }}">show</a>
-                    <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_restaurant_new') }}">Create new</a>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ path('app_restaurant_new') }}" class="btn btn-primary">Créer un nouveau restaurant</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
