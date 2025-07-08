@@ -5,42 +5,39 @@
 {% block body %}
     <div class="container mt-5">
         <div class="card shadow-lg border-0">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <h2 class="mb-0"><i class="fas fa-utensils me-2"></i>Détails du Restaurant</h2>
-                <a href="{{ path('app_restaurant_index') }}" class="btn btn-light btn-sm">
-                    <i class="fas fa-arrow-left"></i> Retour à la liste
-                </a>
-            </div>
+            <div class="row g-0">
+                <div class="col-md-5">
+                    {% if restaurant.image %}
+                        <img src="{{ asset('uploads/restaurants/' ~ restaurant.image) }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">
+                    {% else %}
+                        <img src="{{ asset('images/default-restaurant.jpg') }}" class="img-fluid rounded-start" alt="Image par défaut">
+                    {% endif %}
+                </div>
 
-            <div class="card-body">
-                <table class="table table-striped table-bordered">
-                    <tbody>
-                    <tr>
-                        <th scope="row"><i class="fas fa-hashtag me-1"></i>ID</th>
-                        <td>{{ restaurant.id }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><i class="fas fa-signature me-1"></i>Nom</th>
-                        <td>{{ restaurant.name }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><i class="fas fa-list me-1"></i>Type</th>
-                        <td>{{ restaurant.type }}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><i class="fas fa-map-marker-alt me-1"></i>Adresse</th>
-                        <td>{{ restaurant.address }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-utensils me-2"></i>{{ restaurant.name }}
+                        </h2>
+                        <p class="card-text"><strong>Type :</strong> {{ restaurant.type }}</p>
+                        <p class="card-text"><strong>Adresse :</strong> {{ restaurant.address }}</p>
+                        <p class="card-text"><small class="text-muted">ID : {{ restaurant.id }}</small></p>
 
-            <div class="card-footer d-flex justify-content-between">
-                <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-warning">
-                    <i class="fas fa-edit"></i> Modifier
-                </a>
+                        <div class="mt-4 d-flex gap-2">
+                            <a href="{{ path('app_restaurant_index') }}" class="btn btn-secondary fw-bold shadow rounded-pill">
+                                <i class="fas fa-arrow-left"></i> Retour à la liste
+                            </a>
 
-                {{ include('restaurant/_delete_form.html.twig', {'attr': {'class': 'd-inline'}}) }}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </a>
+
+                                {{ include('restaurant/_delete_form.html.twig', {'button_class': 'btn btn-danger'}) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

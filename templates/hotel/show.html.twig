@@ -6,23 +6,32 @@
     <div class="container mt-5">
         <div class="card shadow-lg border-0">
             <div class="row g-0">
-
+                <div class="col-md-5">
+                    {% if hotel.image %}
+                        <img src="{{ asset('uploads/hotels/' ~ hotel.image) }}" class="img-fluid rounded-start" alt="{{ hotel.name }}">
+                    {% else %}
+                        <img src="{{ asset('images/default-hotel.jpg') }}" class="img-fluid rounded-start" alt="Image par défaut">
+                    {% endif %}
+                </div>
                 <div class="col-md-7">
                     <div class="card-body">
                         <h2 class="card-title">{{ hotel.name }}</h2>
                         <p class="card-text"><strong>Étoiles :</strong> {{ hotel.stars }} ⭐</p>
                         <p class="card-text"><strong>Adresse :</strong> {{ hotel.address }}</p>
                         <p class="card-text"><strong>Prix :</strong> {{ hotel.price }} MAD / nuit</p>
-                        <p class="card-text"><small class="text-muted">ID: {{ hotel.id }}</small></p>
+                        <p class="card-text"><small class="text-muted">ID : {{ hotel.id }}</small></p>
 
                         <div class="mt-4 d-flex gap-2">
-                            <a href="{{ path('app_hotel_index') }}" class="btn btn-outline-secondary">
+                            <a href="{{ path('app_hotel_index') }}" class="btn btn-secondary fw-bold shadow rounded-pill">
                                 <i class="bi bi-arrow-left"></i> Retour à la liste
                             </a>
-                            <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}" class="btn btn-primary">
-                                <i class="bi bi-pencil"></i> Modifier
-                            </a>
-                            {{ include('hotel/_delete_form.html.twig', {'button_class': 'btn btn-danger'}) }}
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}" class="btn btn-primary">
+                                    <i class="bi bi-pencil"></i> Modifier
+                                </a>
+                                {{ include('hotel/_delete_form.html.twig', { 'button_class': 'btn btn-danger' }) }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

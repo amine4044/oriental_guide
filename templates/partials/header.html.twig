@@ -1,3 +1,4 @@
+<!--
 <div class="container-fluid bg-light pt-3 d-none d-lg-block">
     <div class="container">
         <div class="row">
@@ -10,7 +11,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="container-fluid position-relative nav-bar p-0">
     <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
@@ -57,11 +58,6 @@
                         </div>
                     </div>
 
-                    {# Contact #}
-                    <a href="{{ path('app_contact') }}"
-                       class="nav-item nav-link {{ '/contact' in app.request.pathinfo ? 'active' : '' }}">
-                        Contact
-                    </a>
 
                     {# Auth Links #}
                     {% if app.user %}
@@ -76,6 +72,13 @@
                             Inscription
                         </a>
                     {% endif %}
+
+                    {# Contact #}
+                    <a href="{{ path('app_contact') }}"
+                       class="nav-item nav-link {{ '/contact' in app.request.pathinfo ? 'active' : '' }}">
+                        Contact
+                    </a>
+
                 </div>
             </div>
         </nav>

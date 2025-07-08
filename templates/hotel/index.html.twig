@@ -33,4 +33,55 @@
             {% endif %}
         </div>
     </div>
+
+    <!-- Footer Début -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <!-- Logo et description -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">VOYAGE</span>UR</h1>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Suivez-nous</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Nos services -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Nos Services</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="{{ path('app_home') }}"><i class="fa fa-angle-right mr-2"></i>À propos</a>
+                    <a class="text-white-50 mb-2" href="{{ path('app_city_index') }}"><i class="fa fa-angle-right mr-2"></i>Destinations</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Forfaits</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Témoignages</a>
+                </div>
+            </div>
+            <!-- Liens utiles -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Liens Utiles</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="{{ path('app_home') }}"><i class="fa fa-angle-right mr-2"></i>À propos</a>
+                    <a class="text-white-50 mb-2" href="{{ path('app_city_index') }}"><i class="fa fa-angle-right mr-2"></i>Destinations</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Forfaits</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Témoignages</a>
+                </div>
+            </div>
+            <!-- Contact -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contactez-nous</h5>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Rue, Rabat , Morocco</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+212 5 12 34 56 78</p>
+                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Fin -->
+
 {% endblock %}
