@@ -8,20 +8,29 @@
             <div class="row g-0">
                 <div class="col-md-5">
                     {% if restaurant.image %}
-                        <img src="{{ asset('uploads/restaurants/' ~ restaurant.image) }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">
-                    {% else %}
-                        <img src="{{ asset('images/default-restaurant.jpg') }}" class="img-fluid rounded-start" alt="Image par défaut">
+                        <img src="/upload/restaurant.avif" class="img-fluid rounded-start">
                     {% endif %}
                 </div>
 
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">
+                        <h2 class="card-title" style="font-size: 2.5rem;">
                             <i class="fas fa-utensils me-2"></i>{{ restaurant.name }}
                         </h2>
-                        <p class="card-text"><strong>Type :</strong> {{ restaurant.type }}</p>
-                        <p class="card-text"><strong>Adresse :</strong> {{ restaurant.address }}</p>
-                        <p class="card-text"><small class="text-muted">ID : {{ restaurant.id }}</small></p>
+                        <p class="card-text" style="font-size: 1.5rem;">
+                            <strong>Type :</strong> {{ restaurant.type }}
+                        </p>
+                        <p class="card-text" style="font-size: 1.5rem;">
+                            <strong>Ville :</strong> {{ restaurant.address }}
+                        </p>
+                        {% if is_granted('ROLE_USER') %}
+                            <p class="card-text" style="font-size: 1.5rem;">
+                                <strong>Réservation et informations :</strong> 05 12 34 56 78
+                            </p>
+                        {% endif %}
+                        {# <p class="card-text" style="font-size: 1.2rem;"><small class="text-muted">ID : {{ restaurant.id }}</small></p> #}
+
+
 
                         <div class="mt-4 d-flex gap-2">
                             <a href="{{ path('app_restaurant_index') }}" class="btn btn-secondary fw-bold shadow rounded-pill">

@@ -8,18 +8,29 @@
             <div class="row g-0">
                 <div class="col-md-5">
                     {% if hotel.image %}
-                        <img src="{{ asset('uploads/hotels/' ~ hotel.image) }}" class="img-fluid rounded-start" alt="{{ hotel.name }}">
-                    {% else %}
-                        <img src="{{ asset('images/default-hotel.jpg') }}" class="img-fluid rounded-start" alt="Image par défaut">
+                        <img src="/upload/hotel.jpeg" class="img-fluid rounded-start">
                     {% endif %}
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">{{ hotel.name }}</h2>
-                        <p class="card-text"><strong>Étoiles :</strong> {{ hotel.stars }} ⭐</p>
-                        <p class="card-text"><strong>Adresse :</strong> {{ hotel.address }}</p>
-                        <p class="card-text"><strong>Prix :</strong> {{ hotel.price }} MAD / nuit</p>
-                        <p class="card-text"><small class="text-muted">ID : {{ hotel.id }}</small></p>
+                        <h2 class="card-title" style="font-size: 2.5rem;">
+                            {{ hotel.name }}
+                        </h2>
+                        <p class="card-text" style="font-size: 1.5rem;">
+                            <strong>Étoiles :</strong> {{ hotel.stars }} ⭐
+                        </p>
+                        <p class="card-text" style="font-size: 1.5rem;">
+                            <strong>Ville :</strong> {{ hotel.address }}
+                        </p>
+                        <p class="card-text" style="font-size: 1.5rem;">
+                            <strong>Prix :</strong> {{ hotel.price }} MAD / nuit
+                        </p>
+                        {% if is_granted('ROLE_USER') %}
+                            <p class="card-text" style="font-size: 1.5rem;">
+                                <strong>Réservation et informations :</strong> 05 12 34 56 78
+                            </p>
+                        {% endif %}
+
 
                         <div class="mt-4 d-flex gap-2">
                             <a href="{{ path('app_hotel_index') }}" class="btn btn-secondary fw-bold shadow rounded-pill">

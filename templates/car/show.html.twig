@@ -8,17 +8,21 @@
             <div class="row g-0">
                 <div class="col-md-5">
                     {% if car.image %}
-                        <img src="{{ asset('uploads/cars/' ~ car.image) }}" class="img-fluid rounded-start" alt="{{ car.name }}">
-                    {% else %}
-                        <img src="{{ asset('images/default-car.jpg') }}" class="img-fluid rounded-start" alt="Image par défaut">
+                        <img src="/upload/car.jpg" class="img-fluid rounded-start">
                     {% endif %}
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">{{ car.name }}</h2>
-                        <p class="card-text"><strong>Adresse :</strong> {{ car.address }}</p>
-                        <p class="card-text"><strong>Prix :</strong> {{ car.price }} MAD / jour</p>
-                        <p class="card-text"><small class="text-muted">ID : {{ car.id }}</small></p>
+                        <h2 class="card-title" style="font-size: 2.5rem;">{{ car.name }}</h2>
+                        <p class="card-text" style="font-size: 1.5rem;"><strong>Ville :</strong> {{ car.address }}</p>
+                        <p class="card-text" style="font-size: 1.5rem;"><strong>Prix :</strong> {{ car.price }} MAD / jour</p>
+                        {% if is_granted('ROLE_USER') %}
+                            <p class="card-text" style="font-size: 1.5rem;">
+                                <strong>Réservation et informations :</strong> 05 12 34 56 78
+                            </p>
+                        {% endif %}
+                       {# <p class="card-text" style="font-size: 1.2rem;"><small class="text-muted">ID : {{ car.id }}</small></p> #}
+
 
                         <div class="mt-4 d-flex gap-2">
                             <a href="{{ path('app_car_index') }}" class="btn btn-secondary fw-bold shadow rounded-pill">
